@@ -14,10 +14,16 @@ public class Main {
         System.out.println("Напиши слово \"комманда\", чтобы узнать, что я умею");
         Scanner cmd = new Scanner(System.in);
         String cmd1 = cmd.next();
-        if (cmd1 == "комманда") {
-            System.out.println("1.. 2.. 3...");
+        
+        switch (cmd1) {
+        case "комманда" :
+            System.out.println("1.Узнать прогноз погоды + "\n"+ 2.Последние новости");
+            break;
+            default : 
+            System.out.println("Пока.");
+            break;
         }
-        else System.out.println("Пока.");
+        
 
     }
 }
