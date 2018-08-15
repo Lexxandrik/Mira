@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Привет, меня зовут Mira. Представьтесь, пожалуйста.");
+        System.out.println("Привет, меня зовут Mira. Представься, пожалуйста.");
         System.out.println("Тебя зовут...");
         Scanner name = new Scanner(System.in);
         String str = name.nextLine();
