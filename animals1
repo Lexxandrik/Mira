@@ -1,0 +1,17 @@
+guess_matrix = {'Слон':['Серый',"Синий"], 'Пчела':['Желтый','Черный'], 'Аист':['Белый','Черный']}
+
+animals = guess_matrix.keys()
+while True:
+    user_animal = input("Введи одно из трех животных: Слон, Пчела, Аист")
+    if user_animal in animals:
+        colors = guess_matrix[user_animal]
+        while True:
+            guess_color = input("Угадай цвет")
+            if guess_color in colors:
+                print("Верно")
+                break
+            else:
+                print("Для данного животного это не верный цвет.")
+        break
+    else:
+        print("Данного животного нет.")
