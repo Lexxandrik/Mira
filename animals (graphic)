@@ -7,7 +7,10 @@ def output(event):
     guess_matrix = {slon: ['Серый', "Синий"], pchela: ['Желтый', 'Черный'], aist: ['Белый', 'Черный']}
     animals = guess_matrix.keys()
     user_color = entry1.get()
-    if user_color in animals
+    if user_color in animals:
+        label1['text']='Верно!'
+    else:
+        label1['text']='Неверно!'
 
 def slon_show(event) :
     label1["text"]="Введи цвет слона"
@@ -27,11 +30,11 @@ slon.bind("<Button-1>", slon_show)
 
 pchela = Button(root,text="Пчела")
 pchela.grid(row=0, column=1)
-pchela.bind("<Button-1", pchela_show)
+pchela.bind("<Button-1>", pchela_show)
 
 aist = Button(root,text="Аист")
 aist.grid(row=0, column=2)
-aist.bind("<Button-1", aist_show)
+aist.bind("<Button-1>", aist_show)
 
 entry1 = Entry(root, width=10, font=15)
 entry1.grid(row=1, column=2)
