@@ -3,23 +3,28 @@ from tkinter import *
 root = Tk()
 root.title("Угадай цвет животного")
 
+
 def output(event):
     guess_matrix = {slon: ['Серый', "Синий"], pchela: ['Желтый', 'Черный'], aist: ['Белый', 'Черный']}
-    animals = guess_matrix.keys()
     user_color = entry1.get()
-    if user_color in animals:
-        label1['text']='Верно!'
+    colors = guess_matrix[user_color]
+    if user_color in colors:
+        label1['text'] = 'Верно!'
     else:
-        label1['text']='Неверно!'
+        label1['text'] = 'Неверно!'
+
 
 def slon_show(event) :
-    label1["text"]="Введи цвет слона"
+    label1["text"] = "Введи цвет слона"
+
 
 def pchela_show(event):
-    label1["text"]="Введи цвет пчелы"
+    label1["text"] = "Введи цвет пчелы"
+
 
 def aist_show(event):
-    label1["text"]="Введи цвет аиста"
+    label1["text"] = "Введи цвет аиста"
+
 
 label1 = Label(root, width=27, font=15)
 label1.grid(row=3, column=0)
