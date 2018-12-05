@@ -69,6 +69,7 @@ def write():
         w_sheet.write(cost_lst[i], 2, i)
         
     write_book.save('result_yandex.xls')
+    print ('Парсинг завершен')
     driver.close()
 
 
