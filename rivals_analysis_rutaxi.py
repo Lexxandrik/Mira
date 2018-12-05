@@ -13,6 +13,8 @@ driver.get(url)
 
 addr_from = driver.find_element_by_xpath("//div[@id='routers'][0]/input[contains(@class,'nostyle str_obj xdsoft_input')]")
 addr_to = driver.find_element_by_xpath("//div[@id='routers'][1]/input[contains(@class,'nostyle str_obj xdsoft_input')]")
+addr_from_house = 
+addr_to_house = 
 sleep(5)
 
 streets =[]
@@ -36,13 +38,17 @@ def add_address_from():
 
     if len(streets) > 0:
         street = streets[0]
+        house = houses [0]
         addr_from.clear()
         addr_from.send_keys(street)
         sleep(2)
         addr_from.send_keys(Keys.ARROW_DOWN)
         sleep(2)
         addr_from.send_keys(Keys.ENTER)
+        sleep(1)
+        addr_from_house.send_keys(house)
         del streets[0]
+        del houses[0]
         sleep(1)
     else:
         write()
@@ -51,16 +57,20 @@ def add_address_to():
 
     if len(streets) > 0:
         street = streets[0]
+        house = houses [0]
         addr_to.clear()
         addr_to.send_keys(street)
         sleep(2)
         addr_to.send_keys(Keys.ARROW_DOWN)
         sleep(2)
         addr_to.send_keys(Keys.ENTER)
+        sleep(1)
+        addr_to_house.send_keys(house)
         sleep(3)
         cost = driver.find_element_by_xpath("//span[@id='cost']/span[contains(@class,'new_price')]").text
         cost_lst.append(str(cost))
         del streets[0]
+        del houses[0]
 
 def write():
 
@@ -68,7 +78,7 @@ def write():
     w_sheet = write_book.get_sheet(0)
     
     for i in cost_lst:
-        w_sheet.write(cost_lst[i], 2, i)
+        w_sheet.write(cost_lst[i], 4, i)
         
     write_book.save('result_rutaxi.xls')
     driver.close()
