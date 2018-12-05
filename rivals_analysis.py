@@ -42,8 +42,6 @@ def add_address_from():
         addr_from.send_keys(Keys.ENTER)
         del streets[0]
         sleep(1)
-
-        add_address_to()
     else:
         write()
 
@@ -62,24 +60,23 @@ def add_address_to():
         cost_lst.append(str(cost))
         del streets[0]
 
-        add_address_from()
-
-
-
 def write():
 
     write_book = xlcopy(excel_file)
     w_sheet = write_book.get_sheet(0)
+    
+    for i in cost_lst:
+        w_sheet.write(cost_lst[i], 2, i)
+        
+    write_book.save('result.xls')
 
-    write_book.save('rivals1.xls')
 
+for i in range (len(streets)):
+    
+    add_address_from()
+    add_address_to()
 
-add_address_from()
 print (cost_lst)
 
 #нужно разобраться почему записывается только последнее значение, либо перезаписывается одна и та же ячейка
 
-for i in cost_lst:
-    x = 0
-    w_sheet.write(x, 2, i)
-    x += 1
