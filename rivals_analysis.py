@@ -1,0 +1,85 @@
+from xlutils.copy import copy as xlcopy
+import xlrd
+import xlwt
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from time import sleep
+
+url = 'https://taxi.yandex.ru/#index'
+
+driver = webdriver.Firefox()
+
+driver.get(url)
+
+addr_from = driver.find_element_by_id('addressFrom')
+addr_to = driver.find_element_by_id('addressTo')
+
+sleep(5)
+
+streets =[]
+cost_lst = []
+
+excel_file = xlrd.open_workbook('rivals.xls')
+sheet = excel_file.sheet_by_index(0)
+
+row_number = sheet.nrows
+
+if row_number > 0:
+    for row in range (0, row_number):
+        streets.append(str(sheet.row(row)[0]).replace('text:','').replace("'",''))
+        streets.append(str(sheet.row(row)[1]).replace('text:','').replace("'",''))
+
+
+def add_address_from():
+
+    if len(streets) > 0:
+        street = streets[0]
+        addr_from.clear()
+        addr_from.send_keys(street)
+        sleep(2)
+        addr_from.send_keys(Keys.ARROW_DOWN)
+        sleep(2)
+        addr_from.send_keys(Keys.ENTER)
+        del streets[0]
+        sleep(1)
+
+        add_address_to()
+    else:
+        write()
+
+def add_address_to():
+
+    if len(streets) > 0:
+        street = streets[0]
+        addr_to.clear()
+        addr_to.send_keys(street)
+        sleep(2)
+        addr_to.send_keys(Keys.ARROW_DOWN)
+        sleep(2)
+        addr_to.send_keys(Keys.ENTER)
+        sleep(3)
+        cost = driver.find_element_by_xpath("//div[@class='routestats__price']/span[contains(@class,'text')]").text
+        cost_lst.append(str(cost))
+        del streets[0]
+
+        add_address_from()
+
+
+
+def write():
+
+    write_book = xlcopy(excel_file)
+    w_sheet = write_book.get_sheet(0)
+
+    write_book.save('rivals1.xls')
+
+
+add_address_from()
+print (cost_lst)
+
+#нужно разобраться почему записывается только последнее значение, либо перезаписывается одна и та же ячейка
+
+for i in cost_lst:
+    x = 0
+    w_sheet.write(x, 2, i)
+    x += 1
