@@ -68,7 +68,7 @@ def write():
     for i in cost_lst:
         w_sheet.write(cost_lst[i], 2, i)
         
-    write_book.save('result.xls')
+    write_book.save('result_yandex.xls')
     driver.close()
 
 
