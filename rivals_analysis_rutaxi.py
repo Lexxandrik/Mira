@@ -17,6 +17,7 @@ sleep(5)
 
 streets =[]
 cost_lst = []
+houses = []
 
 excel_file = xlrd.open_workbook('rivals.xls')
 sheet = excel_file.sheet_by_index(0)
@@ -26,7 +27,9 @@ row_number = sheet.nrows
 if row_number > 0:
     for row in range (0, row_number):
         streets.append(str(sheet.row(row)[0]).replace('text:','').replace("'",''))
-        streets.append(str(sheet.row(row)[1]).replace('text:','').replace("'",''))
+        streets.append(str(sheet.row(row)[1]).replace('text:','').replace("'",'')) 
+        houses.append(str(sheet.row(row)[2]).replace('text:','').replace("'",''))
+        houses.append(str(sheet.row(row)[3]).replace('text:','').replace("'",''))
 
 
 def add_address_from():
