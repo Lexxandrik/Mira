@@ -11,8 +11,8 @@ driver = webdriver.Firefox()
 
 driver.get(url)
 
-addr_from = driver.find_element_by_xpath("//div[@id='routers']/input[contains(@class,'nostyle str_obj xdsoft_input')][0]")
-addr_to = driver.find_element_by_xpath("//div[@id='routers']/input[contains(@class,'nostyle str_obj xdsoft_input')][1]")
+addr_from = driver.find_element_by_xpath("//div[@id='routers'][0]/input[contains(@class,'nostyle str_obj xdsoft_input')]")
+addr_to = driver.find_element_by_xpath("//div[@id='routers'][1]/input[contains(@class,'nostyle str_obj xdsoft_input')]")
 sleep(5)
 
 streets =[]
