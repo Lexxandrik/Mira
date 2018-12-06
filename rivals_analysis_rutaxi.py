@@ -36,7 +36,7 @@ if row_number > 0:
 
 def add_address_from():
 
-    if len(streets) > 0:
+    if len(streets) > 0 and len(houses) > 0:
         street = streets[0]
         house = houses [0]
         addr_from.clear()
@@ -55,7 +55,7 @@ def add_address_from():
 
 def add_address_to():
 
-    if len(streets) > 0:
+    if len(streets) > 0 and len(houses) > 0:
         street = streets[0]
         house = houses [0]
         addr_to.clear()
