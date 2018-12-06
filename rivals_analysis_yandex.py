@@ -59,6 +59,7 @@ def add_address_to():
         cost = driver.find_element_by_xpath("//div[@class='routestats__price']/span[contains(@class,'text')]").text
         cost_lst.append(str(cost))
         del streets[0]
+        sleep(1)
 
 def write():
 
