@@ -38,7 +38,7 @@ def add_address_from():
 
     if len(streets) > 0 and len(houses) > 0:
         street = streets[0]
-        house = houses [0]
+        house = houses[0]
         addr_from.clear()
         addr_from.send_keys(street)
         sleep(2)
@@ -57,7 +57,7 @@ def add_address_to():
 
     if len(streets) > 0 and len(houses) > 0:
         street = streets[0]
-        house = houses [0]
+        house = houses[0]
         addr_to.clear()
         addr_to.send_keys(street)
         sleep(2)
@@ -82,6 +82,8 @@ def write():
         w_sheet.write(cost_lst[i], 4, i)
         
     write_book.save('result_rutaxi.xls')
+    print ('Парсинг завершен')
+    print('Создан файл result_rutaxi.xls')
     driver.close()
 
 
