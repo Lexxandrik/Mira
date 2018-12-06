@@ -71,6 +71,7 @@ def add_address_to():
         cost_lst.append(str(cost))
         del streets[0]
         del houses[0]
+        sleep(1)
 
 def write():
 
