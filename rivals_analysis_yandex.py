@@ -67,10 +67,11 @@ def write():
     w_sheet = write_book.get_sheet(0)
     
     for i in cost_lst:
-        w_sheet.write(cost_lst[i], 2, i)
+        w_sheet.write(cost_lst[i], 4, i)
         
     write_book.save('result_yandex.xls')
     print ('Парсинг завершен')
+    print('Создан файл result_yandex.xls')
     driver.close()
 
 
